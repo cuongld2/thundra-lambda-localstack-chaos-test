@@ -1,5 +1,5 @@
 {
-  "name": "thundra-demo-localstack",
+  "name": "donald-le-demo-thundra",
   "version": "1.0.0",
   "description": "Thundra LocalStack demo application",
   "dependencies": {
@@ -23,9 +23,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thundra-io/thundra-demo-localstack-java"
+    "url": "git+https://github.com/thundra-io/donald-le-demo-thundra-java"
   },
   "author": "Serkan Özal",
   "license": "Apache 2.0",
-  "homepage": "https://github.com/thundra-io/thundra-demo-localstack-java#readme"
+  "homepage": "https://github.com/thundra-io/donald-le-demo-thundra-java#readme"
 }

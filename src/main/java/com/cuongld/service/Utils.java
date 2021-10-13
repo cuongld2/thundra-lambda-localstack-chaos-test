@@ -1,10 +1,8 @@
-package io.thundra.demo.localstack.service;
+package com.cuongld.service;
 
 import java.util.UUID;
 
-/**
- * @author tolga
- */
+
 public final class Utils {
 
     private Utils() {

@@ -1,28 +1,21 @@
-package io.thundra.demo.localstack.service;
+package com.cuongld.service;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.sqs.AmazonSQS;
+import com.cuongld.model.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.thundra.demo.localstack.model.Product;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import static io.thundra.demo.localstack.service.ClientBuilder.*;
 
-/**
- * @author tolga
- */
-public class AppRequestService {
+public class CreateRequestService {
 
-//    public static final String REQUEST_QUEUE_URL =
-//            ClientBuilder.normalizeUrl(System.getenv("REQUEST_QUEUE_URL"));
-//    public static final String APP_REQUESTS_TABLE_NAME = System.getenv("APP_REQUESTS_TABLE_NAME");
     private Logger logger = Logger.getLogger(this.getClass());
     private static final String PRODUCTS_TABLE_NAME = System.getenv("PRODUCTS_TABLE_NAME");
 
@@ -33,11 +26,11 @@ public class AppRequestService {
     private final DynamoDBMapper dynamoDBMapper;
     private final AmazonS3 s3;
 
-    public AppRequestService() {
-        this.sqs = buildSQS();
-        this.dynamoDB = buildDynamoDB();
+    public CreateRequestService() {
+        this.sqs = ClientBuilder.buildSQS();
+        this.dynamoDB = ClientBuilder.buildDynamoDB();
         this.dynamoDBMapper = buildDynamoDBMapper(dynamoDB);
-        this.s3 = buildS3();
+        this.s3 = ClientBuilder.buildS3();
     }
 
     private DynamoDBMapper buildDynamoDBMapper(AmazonDynamoDB dynamoDB) {

@@ -1,8 +1,6 @@
-package io.thundra.demo.localstack.model;
+package com.cuongld.model;
 
-/**
- * @author tolga
- */
+
 public class Message {
 
     private String requestId;

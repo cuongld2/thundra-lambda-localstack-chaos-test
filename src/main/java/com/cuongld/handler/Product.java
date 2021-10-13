@@ -1,15 +1,11 @@
-package io.thundra.demo.localstack.handler;
+package com.cuongld.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.thundra.demo.localstack.model.Product;
-import io.thundra.demo.localstack.model.Response;
-import io.thundra.demo.localstack.service.AppRequestService;
+import com.cuongld.service.CreateRequestService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -17,20 +13,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.thundra.demo.localstack.service.Utils.generateShortUuid;
+import static com.cuongld.service.Utils.generateShortUuid;
 
-/**
- * @author tolga
- */
-public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
-    private static final Logger logger = LogManager.getLogger(App.class);
+public class Product implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+
+    private static final Logger logger = LogManager.getLogger(Product.class);
     private static final Map<String, String> headers = new HashMap<String, String>() {{
         put("content-type", "application/json");
     }};
 
     private final ObjectMapper mapper = new ObjectMapper();
-    private AppRequestService appRequestService = new AppRequestService();
+    private CreateRequestService createRequestService = new CreateRequestService();
 
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
@@ -55,13 +49,13 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
 
         // create the Product object for post
         String id = generateShortUuid();
-        Product product = new Product(id,"test",4.5f);
+        com.cuongld.model.Product product = new com.cuongld.model.Product(id,"test",4.5f);
         // product.setId(body.get("id").asText());
-        appRequestService.save(product);
+        createRequestService.save(product);
         return new APIGatewayProxyResponseEvent().
                 withStatusCode(200).
                 withHeaders(headers).
-                withBody(mapper.writeValueAsString(new Product(id,"test",4.5f)));
+                withBody(mapper.writeValueAsString(new com.cuongld.model.Product(id,"test",4.5f)));
     }
 
 }

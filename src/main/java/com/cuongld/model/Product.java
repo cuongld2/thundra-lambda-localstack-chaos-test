@@ -1,4 +1,4 @@
-package io.thundra.demo.localstack.model;
+package com.cuongld.model;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;

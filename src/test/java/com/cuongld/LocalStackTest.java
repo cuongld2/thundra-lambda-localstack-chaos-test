@@ -1,4 +1,4 @@
-package io.thundra.demo.localstack;
+package com.cuongld;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -23,9 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
 
-/**
- * @author tolga
- */
+
 public abstract class LocalStackTest {
 
     protected static final int ASSERT_EVENTUALLY_TIMEOUT_SECS = 40;

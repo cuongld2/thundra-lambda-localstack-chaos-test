@@ -1,4 +1,4 @@
-package io.thundra.demo.localstack;
+package com.cuongld;
 
 import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
 import io.thundra.agent.lambda.localstack.FunctionEnvironmentInitializer;
